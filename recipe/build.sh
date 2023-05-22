@@ -3,7 +3,30 @@
 set -euxo pipefail
 
 export GO111MODULE=on
-make deps
+(
+  # Set GOARCH based on build_platform to install native binaries
+  export GOBIN="${BUILD_PREFIX}/bin"
+  export CC="${CC_FOR_BUILD}"
+  case "$build_platform" in
+    osx-64)
+      export GOARCH=amd64
+      ;;
+    osx-arm64)
+      export GOARCH=arm64
+      ;;
+    linux-64)
+      export GOARCH=amd64
+      ;;
+    linux-aarch64)
+      export GOARCH=arm64
+      ;;
+    *)
+     echo "build_platform ${build_platform} not supported" >&2
+     exit 1
+     ;;
+  esac
+  make deps
+)
 
 # We could run "make prerelease" here instead but this fails as some files were
 # already created during the creation of source tarball.
@@ -30,7 +53,8 @@ esac
 make pkg/$target/nomad
 
 # XXX Workaround for "make" above installing lots of things into $PREFIX/bin.
-rm $PREFIX/bin/*
+rm -rf $PREFIX/bin
+mkdir -p $PREFIX/bin
 cp pkg/$target/nomad $PREFIX/bin
 
 # Nomad is a bit tricky with its licenses.
