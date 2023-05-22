@@ -6,6 +6,7 @@ export GO111MODULE=on
 (
   # Set GOARCH based on build_platform to install native binaries
   export GOBIN="${BUILD_PREFIX}/bin"
+  export CC="${CC_FOR_BUILD}"
   case "$build_platform" in
     osx-64)
       export GOARCH=amd64
