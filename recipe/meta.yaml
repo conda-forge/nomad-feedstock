@@ -1,5 +1,5 @@
 {% set name = "nomad" %}
-{% set version = "1.4.9" %}
+{% set version = "1.5.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   - url: https://github.com/hashicorp/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-    sha256: fe5544fe96aff26101217d0e5f1c7238ddd4f642e3dc1f5408a3889eb1d4b37c
+    sha256: 7b89b79e81dba5ae57a88009378c00cd1cc4f457e02e3a6e33976eab09cdd88d
     patches:
       - 0001-Don-t-overwrite-compilers.patch
   - url: https://raw.githubusercontent.com/hashicorp/cronexpr/a5b9ff11e6c27ab08e1dfd6ad1fe99179f441d0a/APLv2
@@ -24,7 +24,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
-    - {{ compiler('go-cgo') }} 1.19
+    - {{ compiler('go-cgo') }} 1.20
     - sysroot_linux-64 2.17  # [linux64]
     - make
     - yarn <2
