@@ -188,5 +188,6 @@ Feedstock Maintainers
 =====================
 
 * [@jonashaag](https://github.com/jonashaag/)
+* [@pavelzw](https://github.com/pavelzw/)
 * [@xhochy](https://github.com/xhochy/)
 
