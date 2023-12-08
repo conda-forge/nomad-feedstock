@@ -5,7 +5,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/nomad-feedstock
 
 Home: https://nomadproject.io
 
-Package license: MPL-2.0
+Package license: BUSL-1.1
 
 Summary: Nomad is an easy-to-use, flexible, and performant workload orchestrator that can deploy a mix of microservice, batch, containerized, and non-containerized applications.
 
