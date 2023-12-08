@@ -63,8 +63,10 @@ cp pkg/$target/nomad $PREFIX/bin
 chmod -R u+rw gopath
 rm -rf gopath
 export GOPATH=$(dirname $(pwd))
+# All hashicorp products have the same license
 go-licenses save . --save_path=./license-files \
 	--ignore github.com/hashicorp/nomad/api \
 	--ignore github.com/hashicorp/cronexpr \
+	--ignore github.com/hashicorp/vault \
 	--ignore github.com/tj/go-spin \
 	--ignore github.com/hashicorp/nomad
