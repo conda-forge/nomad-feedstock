@@ -1,5 +1,5 @@
 {% set name = "nomad" %}
-{% set version = "1.8.1" %}
+{% set version = "1.8.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   - url: https://github.com/hashicorp/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-    sha256: 4e6c3b97030c0d836180fa636d7c401adac43c0ac0322fd18e4033c679b9b4bb
+    sha256: 595406a29a38962f62f55acdbe32fe47ae4bf0df8fe5801575d0fccd3a0b979e
     patches:
       - 0001-Don-t-overwrite-compilers.patch
   - url: https://raw.githubusercontent.com/hashicorp/cronexpr/a5b9ff11e6c27ab08e1dfd6ad1fe99179f441d0a/APLv2
@@ -27,6 +27,7 @@ requirements:
     - {{ stdlib("c") }}
     - {{ compiler('go-cgo') }}
     - make
+    - nodejs 20.*
     - yarn <2
     - go-licenses
 
