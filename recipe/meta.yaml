@@ -20,8 +20,6 @@ source:
 build:
   number: 0
   skip: true  # [win]
-  # only need to build with a single node version as everything is statically linked
-  skip: true  # [nodejs<20]
 
 requirements:
   build:
@@ -29,7 +27,7 @@ requirements:
     - {{ stdlib("c") }}
     - {{ compiler('go-cgo') }}
     - make
-    - nodejs
+    - nodejs *
     - yarn <2
     - go-licenses
 
