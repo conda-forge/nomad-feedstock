@@ -27,7 +27,7 @@ requirements:
     - {{ stdlib("c") }}
     - {{ compiler('go-cgo') }}
     - make
-    - nodejs *
+    - nodejs 20.*
     - yarn <2
     - go-licenses
 
