@@ -1,5 +1,5 @@
 {% set name = "nomad" %}
-{% set version = "1.9.2" %}
+{% set version = "1.9.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   - url: https://github.com/hashicorp/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-    sha256: 3356a3d797f20129b376888d4efcc6c79871df653a1f01d572984c95f9bc646d
+    sha256: 7152af6ba624a40c0df5a9425fd47150a00e8cec79dc8716e5b10f31fdd5a9e7
     patches:
       - 0001-Don-t-overwrite-compilers.patch
   - url: https://raw.githubusercontent.com/hashicorp/cronexpr/a5b9ff11e6c27ab08e1dfd6ad1fe99179f441d0a/APLv2
