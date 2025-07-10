@@ -1,42 +1,44 @@
-{% set name = "nomad" %}
-{% set version = "1.10.3" %}
+schema_version: 1
+
+context:
+  name: nomad
+  version: 1.10.3
 
 package:
-  name: {{ name|lower }}
-  version: {{ version }}
+  name: ${{ name|lower }}
+  version: ${{ version }}
 
 source:
-  - url: https://github.com/hashicorp/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
+  - url: https://github.com/hashicorp/${{ name }}/archive/refs/tags/v${{ version }}.tar.gz
     sha256: 736f2e96bce994d9328807c19beaabb508a4e1d6f0a6cf94356f4dd7a4f238d8
     patches:
       - 0001-Don-t-overwrite-compilers.patch
   - url: https://raw.githubusercontent.com/hashicorp/cronexpr/a5b9ff11e6c27ab08e1dfd6ad1fe99179f441d0a/APLv2
     sha256: cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
-    fn: LICENSE-cronexpr
+    file_name: LICENSE-cronexpr
   - url: https://raw.githubusercontent.com/tj/go-spin/721f604c567004b82bb196abe227ab60360184ba/LICENSE
     sha256: e4855d38fa4a5c43945b62f0731836851d055bc200f42631f0854e75fdefe77c
-    fn: LICENSE-gospin
+    file_name: LICENSE-gospin
 
 build:
   number: 0
-  skip: true  # [win]
+  skip: win
 
 requirements:
   build:
-    - {{ compiler('c') }}
-    - {{ stdlib("c") }}
-    - {{ compiler('go-cgo') }}
+    - ${{ compiler('c') }}
+    - ${{ stdlib("c") }}
+    - ${{ compiler('go-cgo') }}
     - make
     - nodejs 20.*
     - yarn <2
     - go-licenses
 
-test:
-  commands:
-    - nomad -h
+tests:
+  - script:
+      - nomad -h
 
 about:
-  home: https://nomadproject.io
   license: BUSL-1.1
   license_file:
     - LICENSE
@@ -44,11 +46,13 @@ about:
     - LICENSE-gospin
     - license-files/
   summary: Nomad is an easy-to-use, flexible, and performant workload orchestrator that can deploy a mix of microservice, batch, containerized, and non-containerized applications.
-  doc_url: https://developer.hashicorp.com/nomad/docs
-  dev_url: https://github.com/hashicorp/{{ name }}
+  homepage: https://nomadproject.io
+  repository: https://github.com/hashicorp/${{ name }}
+  documentation: https://developer.hashicorp.com/nomad/docs
 
 extra:
   recipe-maintainers:
     - jonashaag
     - xhochy
     - pavelzw
+
