@@ -3,7 +3,7 @@ About nomad-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/nomad-feedstock/blob/main/LICENSE.txt)
 
-Home: https://nomadproject.io
+Home: https://nomadproject.io/
 
 Package license: BUSL-1.1
 
