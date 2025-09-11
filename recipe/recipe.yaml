@@ -28,7 +28,7 @@ requirements:
   build:
     - ${{ compiler('c') }}
     - ${{ stdlib("c") }}
-    - ${{ compiler('go-cgo') }}
+    - ${{ compiler('go-cgo') }} 1.24.*
     - make
     - nodejs 20.*
     - yarn <2
