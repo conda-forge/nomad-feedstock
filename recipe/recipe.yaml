@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: nomad
-  version: 1.10.3
+  version: "1.10.5"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   - url: https://github.com/hashicorp/${{ name }}/archive/refs/tags/v${{ version }}.tar.gz
-    sha256: 736f2e96bce994d9328807c19beaabb508a4e1d6f0a6cf94356f4dd7a4f238d8
+    sha256: 8b4b9afd11c8e13c9619fb3d266354b5aa0426dbf8109fbc2bfbf01af3f5dd0a
     patches:
       - 0001-Don-t-overwrite-compilers.patch
   - url: https://raw.githubusercontent.com/hashicorp/cronexpr/a5b9ff11e6c27ab08e1dfd6ad1fe99179f441d0a/APLv2
@@ -19,6 +19,9 @@ source:
   - url: https://raw.githubusercontent.com/tj/go-spin/721f604c567004b82bb196abe227ab60360184ba/LICENSE
     sha256: e4855d38fa4a5c43945b62f0731836851d055bc200f42631f0854e75fdefe77c
     file_name: LICENSE-gospin
+  - url: https://raw.githubusercontent.com/jmespath/go-jmespath/b89213a6ec69212a244ef0d07d893bef7f2d9091/LICENSE
+    sha256: e4855d38fa4a5c43945b62f0731836851d055bc200f42631f0854e75fdefe77c
+    file_name: LICENSE-jmespath
 
 build:
   number: 0
@@ -28,10 +31,12 @@ requirements:
   build:
     - ${{ compiler('c') }}
     - ${{ stdlib("c") }}
-    - ${{ compiler('go-cgo') }}
+    - if: linux
+      then: sysroot_${{ build_platform }} ${{ c_stdlib_version }}.*
+    - ${{ compiler('go-cgo') }} 1.24.*
     - make
     - nodejs 20.*
-    - yarn <2
+    - pnpm
     - go-licenses
 
 tests:
@@ -44,6 +49,7 @@ about:
     - LICENSE
     - LICENSE-cronexpr
     - LICENSE-gospin
+    - LICENSE-jmespath
     - license-files/
   summary: Nomad is an easy-to-use, flexible, and performant workload orchestrator that can deploy a mix of microservice, batch, containerized, and non-containerized applications.
   homepage: https://nomadproject.io

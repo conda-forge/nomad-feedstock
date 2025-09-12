@@ -7,6 +7,7 @@ export GO111MODULE=on
   # Set GOARCH based on build_platform to install native binaries
   export GOBIN="${BUILD_PREFIX}/bin"
   export CC="${CC_FOR_BUILD}"
+  export LDFLAGS="${LDFLAGS//$PREFIX/$BUILD_PREFIX}"
   case "$build_platform" in
     osx-64)
       export GOARCH=amd64
@@ -68,5 +69,7 @@ go-licenses save . --save_path=./license-files \
 	--ignore github.com/hashicorp/nomad/api \
 	--ignore github.com/hashicorp/cronexpr \
 	--ignore github.com/hashicorp/vault \
+	--ignore github.com/hashicorp/vic \
 	--ignore github.com/tj/go-spin \
+	--ignore github.com/jmespath/go-jmespath \
 	--ignore github.com/hashicorp/nomad
