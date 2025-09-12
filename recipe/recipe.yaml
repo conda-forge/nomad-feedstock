@@ -19,6 +19,9 @@ source:
   - url: https://raw.githubusercontent.com/tj/go-spin/721f604c567004b82bb196abe227ab60360184ba/LICENSE
     sha256: e4855d38fa4a5c43945b62f0731836851d055bc200f42631f0854e75fdefe77c
     file_name: LICENSE-gospin
+  - url: https://raw.githubusercontent.com/jmespath/go-jmespath/b89213a6ec69212a244ef0d07d893bef7f2d9091/LICENSE
+    sha256: e4855d38fa4a5c43945b62f0731836851d055bc200f42631f0854e75fdefe77c
+    file_name: LICENSE-jmespath
 
 build:
   number: 0
@@ -31,7 +34,7 @@ requirements:
     - ${{ compiler('go-cgo') }} 1.24.*
     - make
     - nodejs 20.*
-    - yarn <2
+    - pnpm
     - go-licenses
 
 tests:
@@ -44,6 +47,7 @@ about:
     - LICENSE
     - LICENSE-cronexpr
     - LICENSE-gospin
+    - LICENSE-jmespath
     - license-files/
   summary: Nomad is an easy-to-use, flexible, and performant workload orchestrator that can deploy a mix of microservice, batch, containerized, and non-containerized applications.
   homepage: https://nomadproject.io

@@ -68,5 +68,7 @@ go-licenses save . --save_path=./license-files \
 	--ignore github.com/hashicorp/nomad/api \
 	--ignore github.com/hashicorp/cronexpr \
 	--ignore github.com/hashicorp/vault \
+	--ignore github.com/hashicorp/vic \
 	--ignore github.com/tj/go-spin \
+	--ignore github.com/jmespath/go-jmespath \
 	--ignore github.com/hashicorp/nomad
