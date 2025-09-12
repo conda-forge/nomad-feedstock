@@ -31,8 +31,8 @@ requirements:
   build:
     - ${{ compiler('c') }}
     - ${{ stdlib("c") }}
-    - if: build_platform == "linux-64"
-      then: sysroot_linux-64 ${{ c_stdlib_version }}.*
+    - if: linux
+      then: sysroot_${{ build_platform }} ${{ c_stdlib_version }}.*
     - ${{ compiler('go-cgo') }} 1.24.*
     - make
     - nodejs 20.*
