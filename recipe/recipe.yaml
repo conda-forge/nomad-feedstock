@@ -33,7 +33,7 @@ requirements:
     - ${{ stdlib("c") }}
     - if: linux
       then: sysroot_${{ build_platform }} ${{ c_stdlib_version }}.*
-    - ${{ compiler('go-cgo') }} 1.24.*
+    - ${{ compiler('go-cgo') }}
     - make
     - nodejs 20.*
     - pnpm
