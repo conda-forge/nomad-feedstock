@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: nomad
-  version: "1.10.5"
+  version: "1.11.0"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   - url: https://github.com/hashicorp/${{ name }}/archive/refs/tags/v${{ version }}.tar.gz
-    sha256: 8b4b9afd11c8e13c9619fb3d266354b5aa0426dbf8109fbc2bfbf01af3f5dd0a
+    sha256: f7eec04e71cf93c7df74ae2c9b0e76c8cdaa0f3084c493458c02f3b72817f287
     patches:
       - 0001-Don-t-overwrite-compilers.patch
   - url: https://raw.githubusercontent.com/hashicorp/cronexpr/a5b9ff11e6c27ab08e1dfd6ad1fe99179f441d0a/APLv2
@@ -33,7 +33,7 @@ requirements:
     - ${{ stdlib("c") }}
     - if: linux
       then: sysroot_${{ build_platform }} ${{ c_stdlib_version }}.*
-    - ${{ compiler('go-cgo') }} 1.24.*
+    - ${{ compiler('go-cgo') }}
     - make
     - nodejs 20.*
     - pnpm
