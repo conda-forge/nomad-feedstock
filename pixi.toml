@@ -5,7 +5,7 @@
 
 [workspace]
 name = "nomad-feedstock"
-version = "3.53.0"  # conda-smithy version used to generate this file
+version = "3.53.3"  # conda-smithy version used to generate this file
 description = "Pixi configuration for conda-forge/nomad-feedstock"
 authors = ["@conda-forge/nomad"]
 channels = ["conda-forge"]
