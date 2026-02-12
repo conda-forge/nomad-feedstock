@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: nomad
-  version: "1.11.1"
+  version: "1.11.2"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   - url: https://github.com/hashicorp/${{ name }}/archive/refs/tags/v${{ version }}.tar.gz
-    sha256: 4ee3a7984e8c6c6a85a87bd8eb917d90d16f829600d4ba16fed394233b88251e
+    sha256: 4f9ab403380e5c462f78620ee768c1d26bdfc8d9991fb1230c1fed56229c126f
     patches:
       - 0001-Don-t-overwrite-compilers.patch
   - url: https://raw.githubusercontent.com/hashicorp/cronexpr/a5b9ff11e6c27ab08e1dfd6ad1fe99179f441d0a/APLv2
